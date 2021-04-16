@@ -23,6 +23,9 @@ public class PDFContent {
 			+ "    <b>Bold text</b>"
 			+ "    <p class=\"butterfly\">Fancy font</p>"
 			+ "    <img src=\"https://www.w3schools.com/w3css/img_lights.jpg\"/>"
+			// Alternativamente, a imagem pode ser enviada em base64 no corpo do HTML
+			//byte[] image = ...
+			//<img src=\"data:image/png;base64," + Base64.getEncoder().encodeToString(image) + "\"></img>
 			+ "</body></html>";
 	
 	public static String getContentToPdf() {
