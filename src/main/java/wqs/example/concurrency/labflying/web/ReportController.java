@@ -23,17 +23,20 @@ import wqs.example.concurrency.labflying.service.PDFService;
 public class ReportController {
 	
 	private final PDFService pdfService;
+	
+	private final String FILE_NAME = "pdfteste.pdf";
          
     @GetMapping("/pdf")
     public ResponseEntity<InputStreamResource> exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
         
-        var data = pdfService.toPDF(PDFContent.getContentToPdf(), "/home/basis/Documentos/pdfteste.pdf");
+        var data = pdfService.toPDF(PDFContent.getContentToPdf());
         
-        return this.output(data.toByteArray(), getHttpHeaders("pdfteste.pdf"));
+        return this.output(data.toByteArray(), getHttpHeaders(FILE_NAME));
          
     }
     
 	private HttpHeaders getHttpHeaders(String nome) {
+		
         HttpHeaders headers = new HttpHeaders();
         headers.add("Cache-Control", "no-cache, no-store, must-revalidate");
         headers.add("Pragma", "no-cache");
